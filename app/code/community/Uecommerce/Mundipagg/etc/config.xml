@@ -366,27 +366,6 @@
                 <allowspecific>0</allowspecific>
                 <payment_action>authorize</payment_action>
             </mundipagg_twocreditcards>
-            <mundipagg_threecreditcards>
-                <model>mundipagg/threecreditcards</model>
-                <active>0</active>
-                <title><![CDATA[3 Cartões de Crédito]]></title>
-                <allowspecific>0</allowspecific>
-                <payment_action>authorize</payment_action>
-            </mundipagg_threecreditcards>
-            <mundipagg_fourcreditcards>
-                <model>mundipagg/fourcreditcards</model>
-                <active>0</active>
-                <title><![CDATA[4 Cartões de Crédito]]></title>
-                <allowspecific>0</allowspecific>
-                <payment_action>authorize</payment_action>
-            </mundipagg_fourcreditcards>
-            <mundipagg_fivecreditcards>
-                <model>mundipagg/fivecreditcards</model>
-                <active>0</active>
-                <title><![CDATA[5 Cartões de Crédito]]></title>
-                <allowspecific>0</allowspecific>
-                <payment_action>authorize</payment_action>
-            </mundipagg_fivecreditcards>
             <mundipagg_boleto>
                 <model>mundipagg/boleto</model>
                 <active>0</active>

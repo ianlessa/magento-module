@@ -106,24 +106,6 @@ $_code = $this->getMethodCode();
     			$paymentMethod = '2CreditCards';
     			$paymentMethodLabel = $this->__('Pay with 2 Credit Cards');
     			break;
-
-    		case 'mundipagg_threecreditcards':
-    			$num = 3;
-    			$paymentMethod = '3CreditCards';
-    			$paymentMethodLabel = $this->__('Pay with 3 Credit Cards');
-    			break;
-
-    		case 'mundipagg_fourcreditcards':
-    			$num = 4;
-    			$paymentMethod = '4CreditCards';
-    			$paymentMethodLabel = $this->__('Pay with 4 Credit Cards');
-    			break;
-
-    		case 'mundipagg_fivecreditcards':
-    			$num = 5;
-    			$paymentMethod = '5CreditCards';
-    			$paymentMethodLabel = $this->__('Pay with 5 Credit Cards');
-    			break;
     	endswitch;
     	?>
        	<li>
@@ -135,7 +117,7 @@ $_code = $this->getMethodCode();
     				</div>
     				<p></p>
     			<?php endif ?>
-    			<?php if ( $_code == 'mundipagg_creditcardoneinstallment' || $_code == 'mundipagg_creditcard' || $_code == 'mundipagg_twocreditcards' || $_code == 'mundipagg_threecreditcards' || $_code == 'mundipagg_fourcreditcards' || $_code == 'mundipagg_fivecreditcards'): ?>
+    			<?php if ( $_code == 'mundipagg_creditcardoneinstallment' || $_code == 'mundipagg_creditcard' || $_code == 'mundipagg_twocreditcards'): ?>
 	                <ul>
 	                	<?php for($c=1;$c<=$num;$c++): ?>
 	                		<input type="hidden" id="mundipagg_type" name="payment[mundipagg_type]" value="<?php echo $paymentMethod ; ?>"/>

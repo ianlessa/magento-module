@@ -86,30 +86,6 @@ class Uecommerce_Mundipagg_Block_Standard_Partial extends Mage_Checkout_Block_On
     {
         return Mage::getModel('mundipagg/twocreditcards');
     }
-
-    /**
-     * Return threecreditcards model
-     */
-    public function getThreecreditcards() 
-    {
-        return Mage::getModel('mundipagg/threecreditcards');
-    }
-
-    /**
-     * Return fourcreditcards model
-     */
-    public function getFourcreditcards() 
-    {
-        return Mage::getModel('mundipagg/fourcreditcards');
-    }
-
-    /**
-     * Return fivecreditcards model
-     */
-    public function getFivecreditcards() 
-    {
-        return Mage::getModel('mundipagg/fivecreditcards');
-    }
     
     /**
      * Return recurrence payment model

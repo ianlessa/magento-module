@@ -19,9 +19,6 @@ class Uecommerce_Mundipagg_Test_Selenium_CcTypes extends Uecommerce_Mundipagg_Te
 			'payment/mundipagg_creditcardoneinstallment/active' => 1,
 			'payment/mundipagg_creditcard/active'               => 1,
 			'payment/mundipagg_twocreditcards/active'           => 1,
-			'payment/mundipagg_threecreditcards/active'         => 1,
-			'payment/mundipagg_fourcreditcards/active'          => 1,
-			'payment/mundipagg_fivecreditcards/active'          => 1,
 		);
 
 		$this->setAllFakeCc();

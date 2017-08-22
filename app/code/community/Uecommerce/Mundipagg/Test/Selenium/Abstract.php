@@ -46,8 +46,6 @@ class Uecommerce_Mundipagg_Test_Selenium_Abstract extends PHPUnit_Extensions_Sel
     protected static $_productSku = 'test';
     protected static $_defaultSleep = 10;
     protected $_envCI = 'MAGE';
-   
-
 
     public function setUp(){
         parent::setUp();
@@ -436,6 +434,4 @@ class Uecommerce_Mundipagg_Test_Selenium_Abstract extends PHPUnit_Extensions_Sel
             $this->assertContains($url,$this->url());
         }
     }
-    
-
 }
