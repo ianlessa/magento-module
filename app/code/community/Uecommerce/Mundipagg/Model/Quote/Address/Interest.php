@@ -47,7 +47,9 @@ class Uecommerce_Mundipagg_Model_Quote_Address_Interest extends Mage_Sales_Model
         }
 
         $this->_setAddress($address);
-
+        $addressObj = $this->_getAddress();
+        $totals = $addressObj->$_totals;
+        
         parent::collect($address);
 
         $quote = $address->getQuote();
@@ -62,6 +64,14 @@ class Uecommerce_Mundipagg_Model_Quote_Address_Interest extends Mage_Sales_Model
             
             $this->_setBaseAmount($amount);
             $this->_setAmount($amount);
+            
+            
+            $shippingAmount = $totals['shipping_amount'];
+            $baseSubtotal = $totals['base_subtotal'];
+            $totalOrderAmount = $baseSubtotal + $shippingAmount + $amount;
+            $address->setGrandTotal($totalOrderAmount);
+            $address->setBaseGrandTotal($totalOrderAmount);
+            $address->save();
         } else {
             $this->_setBaseAmount(0.00);
             $this->_setAmount(0.00);
@@ -84,6 +94,7 @@ class Uecommerce_Mundipagg_Model_Quote_Address_Interest extends Mage_Sales_Model
                 'title' => Mage::helper('mundipagg')->__('Interest'),
                 'value' => $address->getMundipaggInterest()
             ));
+            $this->collect($address);
         }
     }
 }

@@ -15,15 +15,6 @@ class Uecommerce_Mundipagg_Model_Api extends Uecommerce_Mundipagg_Model_Standard
 	private $debugEnabled;
 	private $moduleVersion;
 
-    private $creditCardBrands = [
-      'VI' => 'Visa',
-      'MC' => 'Mastercard',
-      'AE' => 'Amex',
-      'DI' => 'Diners',
-      'EL' => 'Elo',
-      'HI' => 'Hipercard'
-    ];
-
 	public function __construct($Store = null) {
 		$this->helperUtil = new Uecommerce_Mundipagg_Helper_Util();
 		$this->modelStandard = new Uecommerce_Mundipagg_Model_Standard($Store);
@@ -89,7 +80,7 @@ class Uecommerce_Mundipagg_Model_Api extends Uecommerce_Mundipagg_Model_Standard
 
 					if ($token->getId() && $token->getEntityId() == $order->getCustomerId()) {
 						$creditcardTransactionData->CreditCard->InstantBuyKey = $token->getToken();
-						$creditcardTransactionData->CreditCard->CreditCardBrand = $this->creditCardBrands[$token->getCcType()];
+						$creditcardTransactionData->CreditCard->CreditCardBrand = $token->getCcType();
 						/** Tipo de operação: AuthOnly | AuthAndCapture | AuthAndCaptureWithDelay  */
 						$creditcardTransactionData->CreditCardOperation = $creditCardOperationEnum;
 						$creditcardTransactionData->AmountInCents = intval(strval(($paymentData['AmountInCents']))); // Valor da transação
@@ -103,9 +94,9 @@ class Uecommerce_Mundipagg_Model_Api extends Uecommerce_Mundipagg_Model_Standard
 					$creditcardTransactionData->CreditCard->SecurityCode = $paymentData['SecurityCode']; // Código de segurança
 					$creditcardTransactionData->CreditCard->ExpMonth = $paymentData['ExpMonth']; // Mês Exp
 					$creditcardTransactionData->CreditCard->ExpYear = $paymentData['ExpYear']; // Ano Exp 
-					$creditcardTransactionData->CreditCard->CreditCardBrand = $this->creditCardBrands[$paymentData['CreditCardBrandEnum']]; // Bandeira
+					$creditcardTransactionData->CreditCard->CreditCardBrand = $paymentData['CreditCardBrandEnum']; // Bandeira do cartão : Visa ,MasterCard ,Hipercard ,Amex
 					$creditcardTransactionData->CreditCardOperation = $creditCardOperationEnum;
-					/** Tipo de operação: AuthOnly | AuthAndCapture | AuthAndCaptureWithDelay  */
+					/** Tipo de operação: AuthOnly | AuthAndCapture | AuthAndCaptureWithDelay  **/
 					$creditcardTransactionData->AmountInCents = intval(strval(($paymentData['AmountInCents']))); // Valor da transação
 					$creditcardTransactionData->InstallmentCount = $paymentData['InstallmentCount']; // Nº de parcelas
 					$creditcardTransactionData->Options->CurrencyIso = "BRL"; //Moeda do pedido
@@ -143,9 +134,9 @@ class Uecommerce_Mundipagg_Model_Api extends Uecommerce_Mundipagg_Model_Standard
 
 			$_request["CreditCardTransactionCollection"] = $this->ConvertCreditcardTransactionCollectionFromRequest($creditcardTransactionCollection, $standard);
 
-            if($data['payment_method'] === 'mundipagg_recurrencepayment') {
-                $_request = $recurrencyModel->generateRecurrences($_request, $installmentCount);
-            }
+                        if($data['payment_method'] === 'mundipagg_recurrencepayment') {
+                            $_request = $recurrencyModel->generateRecurrences($_request, $installmentCount);
+                        }
 
 			// Buyer data
 			$_request["Buyer"] = array();
@@ -1312,7 +1303,7 @@ class Uecommerce_Mundipagg_Model_Api extends Uecommerce_Mundipagg_Model_Standard
 						$helperLog->info($returnMessage);
 
 					} catch (Exception $e) {
-						$returnMessage = "OK | {$returnMessageLabel} | {$e->getMessage()}";
+						$returnMessage = "KO | {$returnMessageLabel} | {$e->getMessage()}";
 						$helperLog->error($returnMessage);
 					}
 
