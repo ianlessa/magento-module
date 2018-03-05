@@ -1,12 +1,16 @@
 {
     "name": "mundipagg/magentoone",
     "description": "This is a payment module to ease integration with Mundipagg Gateway",
+    "type": "magento-module",
     "authors": [
         {
             "name": "Mundipagg Embeddables team",
             "email": "embeddables@mundipagg.com"
         }
     ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "3.*"
+    },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.1",
         "behat/behat": "~2.5",
